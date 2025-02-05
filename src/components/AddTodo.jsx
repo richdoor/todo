@@ -12,8 +12,8 @@ export default function AddTodo() {
         }
     }
 
-    const handleCancel = (key) => {
-        setTaskList(taskList.filter((task, index) => taskList[index] != taskList[key]))
+    const handleCancel = (index) => {
+        setTaskList(taskList.filter((_, i) => i !== index))
     }
     
     return(
@@ -25,12 +25,12 @@ export default function AddTodo() {
             </div>
             <div>
                 <ul>
-                    {taskList.map((item, index) => {
+                    {taskList.map((task, index) => {
                         return(
-                            <div className="task-container">
+                            <div className="task-container" key={index}>
                                 <input type="checkbox" />
-                                <li key={index}>{item}</li> 
-                                <button className="task-cancel" onClick={(index) => handleCancel(index)}>X</button>
+                                <li>{task}</li> 
+                                <button className="task-cancel" onClick={() => handleCancel(index)}>X</button>
                             </div>
                         );
                     })}
