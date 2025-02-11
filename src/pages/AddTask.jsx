@@ -45,8 +45,8 @@ export default function AddTodo() {
                     {taskList.map((taskObj, index) => {
                         return(
                             <div className="task-container" id={index} key={index}>
-                                <input type="checkbox" className="task-input"  id={index.toString() + "i"} value={completed} onChange={e => setCompleted(e.target.value)}/>
-                                <label className="task-label" htmlFor={index.toString() + "i"}>{taskObj.name}</label>
+                                <input type="checkbox" className="task-input"  id={null} value={completed} onChange={e => setCompleted(e.target.value)}/>
+                                <label className="task-label" htmlFor={null}>{taskObj.name}</label>
                                 <button className="task-cancel" onClick={() => handleCancel(index)}>X</button>
                                 {taskObj.daysLeft}
                             </div>
