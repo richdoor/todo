@@ -6,7 +6,7 @@ export default function AddTodo() {
     const [taskList, setTaskList] = useState([]);
     const [name, setName] = useState("");
     const [date, setDate] = useState("");
-    const [completed, setCompleted] = useState(true);
+    const [completed, setCompleted] = useState(false);
 
     const daysToComplete = (date) => {
         const currDate = new Date().getTime();
@@ -19,6 +19,7 @@ export default function AddTodo() {
     const handleAdd = () => {
         if (name.trim()) {
             setTaskList([...taskList, {
+                id: new Date().getTime(), // get id from curent time in mili
                 name: name, 
                 completed: completed, 
                 dueDate: date, 
@@ -44,9 +45,9 @@ export default function AddTodo() {
                 <ul>
                     {taskList.map((taskObj, index) => {
                         return(
-                            <div className="task-container" id={index} key={index}>
-                                <input type="checkbox" className="task-input"  id={null} value={completed} onChange={e => setCompleted(e.target.value)}/>
-                                <label className="task-label" htmlFor={null}>{taskObj.name}</label>
+                            <div className="task-container" key={taskObj.id}>
+                                <input type="checkbox" className="task-input"  id={taskObj.id} value={completed} onChange={e => setCompleted(e.target.value)}/>
+                                <label className="task-label" htmlFor={taskObj.id}>{taskObj.name}</label>
                                 <button className="task-cancel" onClick={() => handleCancel(index)}>X</button>
                                 {taskObj.daysLeft}
                             </div>
