@@ -1,4 +1,4 @@
-import AddTodo from './components/AddTodo'
+import AddTodo from './pages/AddTask'
 
 import { useState } from 'react'
 

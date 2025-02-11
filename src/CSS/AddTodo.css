@@ -1,0 +1,8 @@
+.task-container {
+    display: flex;
+}
+
+.task-container label {
+    text-decoration: none;
+    list-style-type: none;
+}
